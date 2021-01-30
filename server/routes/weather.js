@@ -67,5 +67,6 @@ weather_router.route('/')
         UpdateCityWeather(city, weather);
         res.send(`city ${city} updated`);
     });
+    
 
 module.exports = weather_router;
