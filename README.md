@@ -15,4 +15,3 @@ Client side uses Vue.
 * General:
   * Add more projects
   * Consider deploying to Netlify
-  * Try linters
