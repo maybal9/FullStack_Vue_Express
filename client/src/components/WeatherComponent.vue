@@ -11,7 +11,12 @@
             <th>Temperature (in Celsius)</th>
           </tr>
         </thead>
-        <!-- <tbody></tbody> -->
+        <tbody>
+          <tr v-for="weather in weathers" :key="weather.city">
+            <th> {{weather.city}} </th>
+            <th> {{weather.temp}} </th>
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>
@@ -23,7 +28,7 @@ export default {
   name: 'WeatherComponent',
   data(){
     return {
-      weathers: {},
+      weathers: [],
       error: '',
       city: '',
       temp: 0
@@ -31,29 +36,8 @@ export default {
   },
   // life-cycle method, runs automatically when component is created
   created(){
-    try{
-      this.weathers = WeatherService.GetAllWeathers();
-    } catch(err){
-      this.error = err;
-    }
+    WeatherService.GetAllWeathers().then(res => this.weathers = res).catch(err => this.error = err); 
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
-/* h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-} */
-</style>

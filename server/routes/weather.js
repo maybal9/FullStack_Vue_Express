@@ -3,10 +3,10 @@ const mongodb = require('mongodb');
 
 const weather_router = express.Router();
 
-var weathers = {
-    "Tel-Aviv": 17,
-    "Jerusalem" : 9, 
-}
+var weathers = [
+    {city: "Tel-Aviv", temp: 17},
+    {city: "Jerusalem", temp: 9}
+]
 
 function GetWeather(city){
     //make sure city exists
