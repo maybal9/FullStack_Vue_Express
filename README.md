@@ -4,8 +4,6 @@ Main goal is to practice web development skills and frameworks.
 Server side uses NodeJS + Express.
 Client side uses Vue + Bulma.
 
-This app was built thanks to this step-by-step awesome guide: https://www.youtube.com/watch?v=j55fHUJqtyw&list=PLillGF-RfqbYSx-Ab1xWVanGKtowTsnNm
-
 # Projects included:
 * Weather API
 
@@ -14,3 +12,5 @@ This app was built thanks to this step-by-step awesome guide: https://www.youtub
   * MongoDB integration
 * General:
   * Consider deploying to Netlify
+
+This app was built thanks to this step-by-step awesome guide: https://www.youtube.com/watch?v=j55fHUJqtyw&list=PLillGF-RfqbYSx-Ab1xWVanGKtowTsnNm
