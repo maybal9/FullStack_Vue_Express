@@ -18,7 +18,9 @@ class WeatherService {
                 })
             }
         )
-        .catch(err => err)
+        .catch(err => err);
+    }
+
     // // Get weather of city
     // static GetWeather(city) {
     //     return new Promise((resolve, reject) =>{
@@ -35,12 +37,13 @@ class WeatherService {
     //         }
     //     });
     // }
-    // // Add city and weather
-    // static AddCity(city, temp){
-    //     return axios.post(backend_api_url, {
-    //         city: city,
-    //         weather: temp
-    //     });
+
+    // Add city and weather
+    static AddCity(city, temp){
+        return axios.post(backend_api_url, {
+            city: city,
+            weather: temp
+        });
     }
     // Update weather of city
     static UpdateCityWeather(city, temp){
@@ -51,9 +54,7 @@ class WeatherService {
     }
     // Delete city
     static DeleteCity(city){
-        return axios.delete(`${backend_api_url}${city}`, {
-            city: city
-        });
+        return axios.delete(`${backend_api_url}${city}`);
     }
 }
 

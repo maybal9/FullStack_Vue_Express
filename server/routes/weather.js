@@ -10,12 +10,17 @@ var weathers = [
 
 function GetWeather(city){
     //make sure city exists
-    return weathers[city].toString();
+    weather = weathers.find( w => w.city = city);
+    return weather.temp.toString();
 }
 
 function DeleteCity(city){
     //make sure city entry exists
-    delete weathers[city];
+    var index = weathers.findIndex( (element) => element.city == city );
+    if (index > -1) {
+        weathers.splice(index, 1);
+    }
+    return weathers;
 }
 
 function GetAllWeathers(){
@@ -24,12 +29,16 @@ function GetAllWeathers(){
 
 function AddCityWeather(city, weather){
     //make sure city doesn't exists already
-    weathers[city] = weather;
+    var weather_container = {};
+    weather_container.city = city;
+    weather_container.temp = weather;
+    weathers.push(weather_container);
+    return weathers;
 }
 
 function UpdateCityWeather(city, weather){
     //make sure city entry exists
-    weathers[city] = weather;
+    weathers.find( w => w.city = city).temp = weather;
 }
 
 weather_router.route('/:city')
