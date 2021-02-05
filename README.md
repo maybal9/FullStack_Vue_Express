@@ -2,16 +2,15 @@
 A simple web application that groups together all my interview home-assignments.
 Main goal is to practice web development skills and frameworks. 
 Server side uses NodeJS + Express.
-Client side uses Vue.
+Client side uses Vue + Bulma.
+
+This app was built thanks to this step by step awesome guide: https://www.youtube.com/watch?v=j55fHUJqtyw&list=PLillGF-RfqbYSx-Ab1xWVanGKtowTsnNm
+
+# Projects included:
+* Weather API
 
 # TODO:
 * Server:
   * MongoDB integration
-  * Handle Errors
-  * Tests
-* Client:
-  * CSS framework: Bulma
-  * Connect client with server
 * General:
-  * Add more projects
   * Consider deploying to Netlify
