@@ -1,28 +1,32 @@
 <template>
   <div class="container">
-    <h1>Latest Weather Information</h1>
-    <hr>
+    <h1 class="title">Latest Weather Information</h1>
     <p class="error" v-if="error">{{ error }}</p>
-    <div class="container"> 
+    <div class="container has-background-warning-light"> 
       <label for="Add weather">Add city and temperature</label>
-      <input class="input" type="text" id="Add-city" v-model="city" placeholder="Ramat-Gan, Givaatayim, etc..">
-      <input class="input" type="text" id="Add-temp" v-model="temp" placeholder="What is the temperature now?">
+      <div class="center">
+        <input class="input" type="text" id="Add-city" v-model="city" placeholder="Ramat-Gan, Givaatayim, etc..">
+        <input class="input" type="text" id="Add-temp" v-model="temp" placeholder="What is the temperature now?">
+      </div>
       <button class="button" @click="AddWeather">Add!</button>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>City</th>
-            <th>Temperature (in Celsius)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="weather in weathers" :key="weather.city">
-            <th> {{weather.city}} </th>
-            <th> {{weather.temp}} </th>
-            <th> <button class="button" @click="DeleteWeather(weather.city)"> Delete! </button> </th>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-center">
+        <table class="table has-background-primary-light">
+          <thead>
+            <tr>
+              <th>City</th>
+              <th>Temperature (in Celsius)</th>
+              <th> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="weather in weathers" :key="weather.city">
+              <td class="has-text-centered"> {{weather.city}} </td>
+              <td class="has-text-centered"> {{weather.temp}} </td>
+              <td> <button class="button has-text-centered has-background-link-light" @click="DeleteWeather(weather.city)"> Delete! </button> </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </template>
@@ -56,3 +60,16 @@ export default {
 }
 </script>
 
+<style scoped>
+.center {
+  margin: auto;
+  width: 20%;
+  padding: 10px;
+}
+.table-center {
+  margin: auto;
+  width: 35%;
+  padding: 10px;
+  overflow: auto;
+}
+</style>
