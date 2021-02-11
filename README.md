@@ -1,11 +1,8 @@
-# FullStack_Vue_Express
+# Simple_Weather_API
 A simple web application that groups together all my interview home-assignments.
 Main goal is to practice web development skills and frameworks. 
 Server side uses NodeJS + Express.
 Client side uses Vue + Bulma.
-
-# Projects included:
-* Weather API
 
 # TODO:
 * Server:
