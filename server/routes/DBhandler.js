@@ -1,25 +1,23 @@
 var config = require('../../config');
-
 //connection to mongodb using Atlas
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://" + config.db.username + ":" + config.db.password + "@cluster0.1ice3.mongodb.net/"+ config.db.dbname + "?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useUnifiedTopology: true });
+const options = {useUnifiedTopology: true};
 
 DB_handler = {
-    // TODO: make this functional
-    loadWeatherCollection: async function(){
-        try{
-            await client.connect();
-            const collection = client.db(config.db.dbname).collection("weather");
-            return collection;
-        } finally {
-            await client.close();
-        }
-    },
+    dbName: config.db.dbname,
+    collectionName: "weather",
 
     GetAllWeathers: async function(){
-        const weathers = await this.loadWeatherCollection();
-        return weathers.toArray();
+        MongoClient.connect(uri, options, function(err, client) {
+            const db = client.db(this.dbName);
+            const collection = db.collection("weather");
+            collection.find({}).toArray((err, docs) => {
+                console.log("retrieved "+ docs.length +" documents");
+                client.close();
+                return docs;
+            });
+        });
     },
 
     GetWeather: async function(city){
@@ -29,11 +27,20 @@ DB_handler = {
     },
 
     AddCityWeather: async function(city, weather){
-        const weathers = await this.loadWeatherCollection();
-        await weathers.insertOne({
-            city: city,
-            temp: weather
+        cityWeather = {city: city, temp: weather};
+        MongoClient.connect(uri, options, function(err, client) {
+            const db = client.db(this.dbName);
+            const collection = db.collection("weather");
+            collection.insertOne(cityWeather, (err, res) => {
+                console.log("Inserted " + cityWeather.city.toString()+ " into the collection");
+                client.close();
+            });
         });
+        // const weathers = await this.loadWeatherCollection();
+        // await weathers.insertOne({
+        //     city: city,
+        //     temp: weather
+        // });
     },
 
     UpdateCityWeather: async function(city, weather){

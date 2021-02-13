@@ -19,7 +19,8 @@ weather_router.route('/:city')
 //Get all weathers
 weather_router.route('/')
     .get((req, res) =>{
-        var weathers = DBHandler.GetAllWeathers();
+        var weathers = [];
+        DBHandler.GetAllWeathers().then((err, res) => {weathers = res;});
         res.send(weathers);
     })
     //Add a city (POST)
