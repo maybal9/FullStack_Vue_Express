@@ -1,6 +1,8 @@
+var config = require('../../config');
+
 //connection to mongodb using Atlas
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://SpringB:enter951@cluster0.1ice3.mongodb.net/vue_express?retryWrites=true&w=majority";
+const uri = "mongodb+srv://" + config.db.username + ":" + config.db.password + "@cluster0.1ice3.mongodb.net/"+ config.db.dbname + "?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useUnifiedTopology: true });
 
 DB_handler = {
@@ -8,7 +10,7 @@ DB_handler = {
     loadWeatherCollection: async function(){
         try{
             await client.connect();
-            const collection = client.db("vue_express").collection("weather");
+            const collection = client.db(config.db.dbname).collection("weather");
             return collection;
         } finally {
             await client.close();
