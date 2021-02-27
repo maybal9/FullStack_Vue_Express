@@ -4,6 +4,14 @@ Main goal is to practice web development skills and frameworks.
 Server side uses NodeJS + Express.
 Client side uses Vue + Bulma.
 
+Shell command to run server: 
+#1 "npm run dev"
+
+Shell command to run client: 
+#1 "cd client"
+#2 "npm run serve"
+
+
 TODO:
 * Client:
   * Show bad requests result
