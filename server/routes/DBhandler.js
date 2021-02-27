@@ -19,6 +19,12 @@ DB_handler = {
         return docs;
     },
 
+    CityExists: async function(city){
+        const collection = await this.LoadWeatherCollection();
+        var city_records = await collection.find({city: city}).toArray();
+        return city_records.length > 0;
+    },
+
     GetWeather: async function(city){
         const collection = await this.LoadWeatherCollection();
         const doc = await collection.find({city: city}).toArray();
