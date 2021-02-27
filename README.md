@@ -9,6 +9,6 @@ TODO:
   * Show bad requests result
   * Add an Update City button
 * General:
-  * Consider deploying to Netlify
+  * deploy to Heroku
 
 This app was built thanks to this step-by-step awesome guide: https://www.youtube.com/watch?v=j55fHUJqtyw&list=PLillGF-RfqbYSx-Ab1xWVanGKtowTsnNm
