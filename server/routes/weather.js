@@ -4,39 +4,44 @@ const weather_router = express.Router();
 
 weather_router.route('/:city')
     // Get weather of city
-    .get((req, res) =>{ 
+    .get(async (req, res) =>{ 
         var city = req.params.city;
-        var weather = DBHandler.GetWeather(city);
+        var weather = await DBHandler.GetWeather(city);
         res.send(weather);
     })
     // Delete city
-    .delete((req, res) => {
+    .delete(async(req, res) => {
         var city = req.params.city;
-        DBHandler.DeleteCity(city);
+        await DBHandler.DeleteCity(city);
         res.send(`city ${city} deleted`);
     });
 
 //Get all weathers
 weather_router.route('/')
-    .get((req, res) =>{
-        var weathers = [];
-        DBHandler.GetAllWeathers().then((err, res) => {weathers = res;});
+    .get(async (req, res) =>{
+        const weathers = await DBHandler.GetAllWeathers();
         res.send(weathers);
     })
     //Add a city (POST)
-    .post((req, res) => {
+    .post(async (req, res) => {
         var city = req.body.city;
         var weather = req.body.weather;
-        DBHandler.AddCityWeather(city, weather);
+        await DBHandler.AddCityWeather(city, weather);
         res.status(201);
         res.send(`city ${city} added`);
     })
     //Update city weather
-    .put((req, res) => {
+    .put(async (req, res) => {
         var city = req.body.city;
         var weather = req.body.weather;
-        DBHandler.UpdateCityWeather(city, weather);
+        await DBHandler.UpdateCityWeather(city, weather);
         res.send(`city ${city} updated`);
+    })
+    // Delete city
+    .delete(async(req, res) => {
+        var city = req.body.city;
+        await DBHandler.DeleteCity(city);
+        res.send(`city ${city} deleted`);
     });
     
 
