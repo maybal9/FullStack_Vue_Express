@@ -5,8 +5,9 @@ Server side uses NodeJS + Express.
 Client side uses Vue + Bulma.
 
 TODO:
-* Server:
-  * MongoDB integration
+* Client:
+  * Show bad requests result
+  * Add an Update City button
 * General:
   * Consider deploying to Netlify
 
